@@ -1,0 +1,397 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+    --header-height: 3.5rem;
+
+    /* colors */
+    --hue: 35;
+    --first-color: hsl(var(--hue), 100%, 75%);
+    --first-color-alt: hsl(var(--hue), 80%, 56%);
+    --first-color-alt-2: hsl(var(--hue), 60%, 56%);
+    --first-color-light: hsl(var(--hue), 60%, 74%);
+    --title-color: hsl(240, 8%, 95%);
+    --text-color: hsl(240, 8%, 70%);
+    --text-color-light: hsl(240, 8%, 50%);
+    --body-color: hsl(31, 100%, 92%);
+    --container-color: hsl(240, 14%, 8%);
+
+    /* Font */
+    --body-font: "Barlow", sans-serif;
+    --biggest-font-size: 2rem;
+    --bigger-font-size: 1.75rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+
+    /* Font Weight */
+    --font-regular: 400;
+    --font-semi-medium: 600;
+    --font-medium: 700;
+    --font-semi-bold: 900;
+
+    /* Z Index */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+@media screen and (min-width: 1150px) {
+    :root {
+        --biggest-font-size: 3rem;
+        --bigger-font-size: 2rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.875rem;
+        --smaller-font-size: 0.813rem;
+    }
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body,
+button {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--title-color);
+    font-family: var(--second-font);
+    font-weight: var(--font-semi-bold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==== Reusable CSS Classes ==== */
+.container {
+    max-width: 100%;
+    margin-inline: 2rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section {
+    padding-block: 5rem 1rem;
+}
+
+.section__title {
+    text-align: center;
+    font-size: var(--h1-font-size);
+    margin-bottom: 3rem;
+}
+
+.section__title span {
+    color: var(--first-color);
+}
+
+.main {
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    background: linear-gradient(180deg,
+            var(--container-color),
+            60%,
+            hsla(35, 0%, 0%, 0) 100%);
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1rem;
+}
+
+.nav_logo {
+    font-family: var(--body-font);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+    align-self: flex-start;
+}
+
+.nav_logo span {
+    color: var(--first-color);
+}
+
+.nav_list {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 0.5rem;
+}
+
+.nav_link {
+    font-family: var(--body-font);
+    color: var(--title-color);
+    font-weight: var(--font-semi-medium);
+    transition: color 0.4s;
+}
+
+.nav_link:hover {
+    color: var(--first-color);
+}
+
+/* Home */
+.home {
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/img/home_image.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.home_container {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    transform: translateY(50px);
+}
+
+.home_motto {
+    font-family: var(--body-font);
+    font-size: var(--biggest-font-size);
+    font-weight: var(--font-semi-bold);
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.home_subtitle {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: var(--normal-font-size);
+    text-align: center;
+}
+
+.home_button {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.home_button button {
+    position: relative;
+    padding: 0.5rem;
+    background-color: var(--first-color);
+    font-family: var(--body-font);
+    font-weight: var(--font-semi-bold);
+    font-size: var(--small-font-size);
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s;
+    z-index: 1;
+}
+
+.home_button button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-out;
+    z-index: -1;
+}
+
+.home_button button:hover::before {
+    transform: translateX(0) scale(1.1);
+}
+
+.home_button button:hover {
+    color: var(--title-color);
+}
+
+.browseService {
+    padding: 0.5rem;
+    color: var(--title-color);
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    border: 2px;
+    border-style: solid;
+    transition:
+        border-style 0.4s,
+        transform 0.4s;
+}
+
+.browseService:hover {
+    border-style: dashed;
+    transform: scale(1.1);
+}
+
+.information {
+    display: flex;
+    justify-self: center;
+    align-content: space-between;
+    width: 90%;
+    height: auto;
+    background-color: var(--title-color);
+    transform: translateY(100px);
+}
+
+.information_card {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.card_item {
+    width: 200px;
+}
+
+.card_icon {
+    justify-self: center;
+    font-size: 2rem;
+}
+
+.information_title {
+    padding: 0.4rem;
+    color: var(--container-color);
+    text-align: center;
+    font-size: var(--font-regular);
+    letter-spacing: 1px;
+}
+
+.information_line {
+    background-color: var(--first-color);
+    justify-self: center;
+    width: 50px;
+    height: 3px;
+}
+
+.information_detail {
+    padding: 0.5rem;
+    justify-self: center;
+    text-align: center;
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-medium);
+}
+
+/* Breakpoint */
+@media screen and (min-width: 320px) {
+    .container {
+        margin-inline: 1rem;
+    }
+
+    .home_container {
+        transform: translateY(90px);
+    }
+
+    .home {
+        width: 100%;
+        background-size: 200%;
+        background-position-x: center;
+    }
+
+    .home_motto {
+        font-size: var(--h3-font-size);
+    }
+
+    .home_subtitle {
+        font-size: var(--small-font-size);
+    }
+
+    .home_button button {
+        font-size: 0.5rem;
+        transition: transform 0.4s ease-out;
+    }
+
+    .home_button button:hover {
+        transform: scale(1.1);
+    }
+
+    .browseService {
+        font-size: 0.5rem;
+        transition: transform 0.4s;
+    }
+
+    .browseService:hover {
+        transform: scale(1.1);
+    }
+
+    .card_icon {
+        font-size: 1rem;
+    }
+
+    .information_detail {
+        font-size: 0.5rem;
+        font-weight: var(--font-semi-medium);
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .home_container {
+        width: 460px;
+        margin-inline: 1.5rem;
+        transform: translateY(70px);
+    }
+
+    .home {
+        background-size: cover;
+    }
+}
+
+@media screen and (min-width: 1150px) {
+    .header {
+        width: 100%;
+        background-color: var(--container-color);
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav_list {
+        display: flex;
+        flex-direction: row;
+        column-gap: 2rem;
+    }
+}
