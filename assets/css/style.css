@@ -37,12 +37,26 @@
     --z-fixed: 100;
 }
 
-@media screen and (min-width: 1150px) {
+@media screen and (min-width: 540px) {
     :root {
-        --biggest-font-size: 3rem;
+        --biggest-font-size: 2.5rem;
         --bigger-font-size: 2rem;
         --h1-font-size: 2.25rem;
         --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 0.938rem;
+        --small-font-size: 0.813rem;
+        --smaller-font-size: 0.75rem;
+        --detail-font-size: 0.6rem;
+    }
+}
+
+@media screen and (min-width: 1150px) {
+    :root {
+        --biggest-font-size: 4rem;
+        --bigger-font-size: 2rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.7rem;
         --h3-font-size: 1.25rem;
         --normal-font-size: 1rem;
         --small-font-size: 0.875rem;
@@ -110,6 +124,7 @@ img {
 }
 
 .section {
+    /* min-height: 100vh; */
     padding-block: 5rem 1rem;
 }
 
@@ -179,7 +194,7 @@ img {
 .home {
     width: 100%;
     height: 100%;
-    background-image: url("/assets/img/home_image.png");
+    background-image: url("/assets/img/bg2.jfif");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -187,11 +202,18 @@ img {
 .home_container {
     display: flex;
     flex-direction: column;
+    gap: .5rem;
     justify-self: center;
     transform: translateY(50px);
 }
-
+.home_data {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    margin-bottom: .5rem;
+}
 .home_motto {
+    display: flex;
     font-family: var(--body-font);
     font-size: var(--biggest-font-size);
     font-weight: var(--font-semi-bold);
@@ -203,16 +225,17 @@ img {
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     font-weight: var(--normal-font-size);
-    text-align: center;
+    /* text-align: center; */
 }
 
 .home_button {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    margin-bottom: 1rem;
 }
 
-.home_button button {
+.bookingBtn {
     position: relative;
     padding: 0.5rem;
     background-color: var(--first-color);
@@ -221,11 +244,11 @@ img {
     font-size: var(--small-font-size);
     cursor: pointer;
     overflow: hidden;
-    transition: color 0.4s;
     z-index: 1;
+    /* transition: color 0.9s ease; */
 }
 
-.home_button button::before {
+.bookingBtn::before {
     content: "";
     position: absolute;
     top: 0;
@@ -234,16 +257,16 @@ img {
     height: 100%;
     background-color: #000000;
     transform: translateX(-100%);
-    transition: transform 0.4s ease-out;
+    transition: transform .4s ease-out, color .4s;
     z-index: -1;
 }
 
-.home_button button:hover::before {
-    transform: translateX(0) scale(1.1);
+.bookingBtn:hover {
+    color: white;
 }
 
-.home_button button:hover {
-    color: var(--title-color);
+.bookingBtn:hover::before {
+    transform: translateX(0) scale(1.1);
 }
 
 .browseService {
@@ -265,18 +288,14 @@ img {
 }
 
 .information {
-    display: flex;
-    justify-self: center;
-    align-content: space-between;
-    width: 90%;
+    width: 100%;
     height: auto;
     background-color: var(--title-color);
-    transform: translateY(100px);
 }
 
 .information_card {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0.5rem;
     width: 100%;
 }
@@ -316,17 +335,20 @@ img {
 
 /* Breakpoint */
 @media screen and (min-width: 320px) {
+    .section {
+        /* min-height: 100dvh; */
+    }
     .container {
         margin-inline: 1rem;
     }
 
     .home_container {
-        transform: translateY(90px);
+        transform: translateY(100px);
     }
 
     .home {
-        width: 100%;
-        background-size: 200%;
+        max-width: 100%;
+        background-size: cover;
         background-position-x: center;
     }
 
@@ -368,20 +390,52 @@ img {
 
 @media screen and (min-width: 540px) {
     .home_container {
-        width: 460px;
+        width: 90%;
         margin-inline: 1.5rem;
-        transform: translateY(70px);
+        gap: 0.5rem;
+        transform: translateY(100px);
     }
 
     .home {
+        width: 100%;
+    }
+    .home_motto {
+        font-size: var(--bigger-font-size);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .home {
+        width: 100%;
         background-size: cover;
+        background-position: center;
+    }
+    .home_container {
+        width: 90%;
+        gap: .5rem;
+        transform: translateY(100px);
+    }
+    .home_motto {
+        font-size: var(--biggest-font-size);
+    }
+    .card_item {
+        width: 150px;
+    }
+    .card_icon {
+        font-size: 1.5rem;
+    }
+    .information_detail {
+        font-size: var(--detail-font-size);
     }
 }
 
 @media screen and (min-width: 1150px) {
     .header {
         width: 100%;
-        background-color: var(--container-color);
+        background: linear-gradient(180deg,
+            var(--container-color),
+            50%,
+            hsla(0, 0%, 0%, 0) 100%);
     }
 
     .nav {
@@ -391,7 +445,49 @@ img {
 
     .nav_list {
         display: flex;
+        margin-inline: 1.5rem;
         flex-direction: row;
         column-gap: 2rem;
+    }
+    .home {
+        width: 100%;
+        height: 650px;
+        background-size: cover;
+        background-position: center;
+
+    }
+    .home_container {
+        width: 90%;
+        transform: translateY(250px);
+    }
+    .home_motto {
+        font-size: var(--biggest-font-size);
+    }
+    .home_subtitle {
+        font-size: var(--h2-font-size);
+    }
+    .home_button button {
+        font-size: var(--small-font-size);
+        padding: 1rem;
+    }
+    .browseService {
+        font-size: var(--small-font-size);
+        padding: 1rem;
+    }
+    .card_item {
+        width: 200px;
+    }
+    .card_icon {
+        font-size: var(--h1-font-size);
+    }
+    .information_title {
+        font-size: var(--h3-font-size);
+    }
+    .information_line {
+        width: 70px;
+        height: 4px;
+    }
+    .information_detail {
+        font-size: var(--small-font-size);
     }
 }
